@@ -7,7 +7,6 @@
 // - isFull() - O(1)
 // - top() O(1)
 
-// Time complexity for each operations
 #include <iostream>
 #define MAX_STACK_SIZE 5
 using namespace std;
