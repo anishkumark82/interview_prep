@@ -43,9 +43,9 @@ int main()
     printf("findtreeht() : %d\n",find_ht(root));
 
     //std::cout << "breadth first search\n";
-    //breadth_first_search(root);
+    bst_breadth_first_search(root);
 
-    //std::cout << "\nDepth first search\n";
+    std::cout << "\nDepth first search\n";
     std::cout << "Pre-order\n";
     preorder_traversal(root);
     std::cout << "\nIn-order\n";

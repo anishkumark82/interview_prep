@@ -45,6 +45,9 @@ extern void postorder_traversal(node *root);
 // function to check if a tree is a bst
 extern bool isBST(node *root);
 
+// function for Breadth first search
+extern void bst_breadth_first_search(node *root);
+
 #endif // _BST_HPP_
 
 
