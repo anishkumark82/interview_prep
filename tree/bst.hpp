@@ -48,6 +48,9 @@ extern bool isBST(node *root);
 // function for Breadth first search
 extern void bst_breadth_first_search(node *root);
 
+// function to determine number of nodes in the binary tree
+extern int bt_size(node *root);
+
 #endif // _BST_HPP_
 
 

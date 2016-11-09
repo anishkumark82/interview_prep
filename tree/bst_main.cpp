@@ -57,5 +57,6 @@ int main()
 
     //printf("\ndetermine_if_bst() : %s\n",(determine_if_bst(root))?"True":"False");
 
+    cout<<"Number of nodes in binary tree :: "<<bt_size(root)<<endl;
     return 0;
 }
