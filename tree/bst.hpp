@@ -51,6 +51,14 @@ extern void bst_breadth_first_search(node *root);
 // function to determine number of nodes in the binary tree
 extern int bt_size(node *root);
 
+// Iterative pre-order traversal
+extern void preorder_iterative(node *root);
+
+// Iterative post-order traversal
+extern void postorder_iterative(node *root);
+
+// Iterative in-order traversal
+extern void inorder_iterative(node *root);
 #endif // _BST_HPP_
 
 

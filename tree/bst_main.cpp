@@ -58,5 +58,15 @@ int main()
     //printf("\ndetermine_if_bst() : %s\n",(determine_if_bst(root))?"True":"False");
 
     cout<<"Number of nodes in binary tree :: "<<bt_size(root)<<endl;
+
+    std::cout << "\nPre-order iterative traversal\n";
+    preorder_iterative(root);
+
+    std::cout << "\nPost-order iterative traversal\n";
+    postorder_iterative(root);
+
+    std::cout << "\nPost-order iterative traversal\n";
+    inorder_iterative(root);
+
     return 0;
 }
