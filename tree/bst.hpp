@@ -59,6 +59,12 @@ extern void postorder_iterative(node *root);
 
 // Iterative in-order traversal
 extern void inorder_iterative(node *root);
+
+// Print nodes in each level using 2 queues
+extern void bt_level_print_1(node *root);
+
+// Print nodes in each level using 1 queue and delimiter
+extern void bt_level_print_2(node *root);
 #endif // _BST_HPP_
 
 

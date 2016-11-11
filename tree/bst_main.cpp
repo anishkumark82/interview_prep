@@ -59,14 +59,20 @@ int main()
 
     cout<<"Number of nodes in binary tree :: "<<bt_size(root)<<endl;
 
-    std::cout << "\nPre-order iterative traversal\n";
+    cout << "\nPre-order iterative traversal\n";
     preorder_iterative(root);
 
-    std::cout << "\nPost-order iterative traversal\n";
+    cout << "\nPost-order iterative traversal\n";
     postorder_iterative(root);
 
-    std::cout << "\nPost-order iterative traversal\n";
+    cout << "\nPost-order iterative traversal\n";
     inorder_iterative(root);
+
+    cout<<"\nPrint nodes at each level using 2 queues"<<endl;
+    bt_level_print_1(root);
+
+    cout<<"\nPrint nodes at each level using 1 queue and delimiter"<<endl;
+    bt_level_print_2(root);
 
     return 0;
 }
