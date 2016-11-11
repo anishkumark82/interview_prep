@@ -74,5 +74,11 @@ int main()
     cout<<"\nPrint nodes at each level using 1 queue and delimiter"<<endl;
     bt_level_print_2(root);
 
+    cout<<"\nReverse level order traversing"<<endl;
+    bst_reverse_breadth_first_search(root);
+
+    cout<<"\nlevel order spiral traversing "<<endl;
+    bt_level_spiral_1(root);
+
     return 0;
 }

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <queue>
+#include <stack>
+
 //#include <stdio.h>
 #include "bst.hpp"
 using namespace std;
@@ -36,4 +38,35 @@ void bst_breadth_first_search(node *root)
         Q.pop();
     }
     return;
+}
+// Space complexity - O(n)
+// Time complexity - O(n)
+void bst_reverse_breadth_first_search(node *root)
+{
+    if(root == NULL)
+        return;
+
+    queue<node *>Q;
+    stack<node *>S;
+    Q.push(root);
+
+    while(!Q.empty())
+    {
+        root = Q.front();
+        Q.pop();
+
+        S.push(root);
+
+        // Right is pushed first since we are using a stack in the second round of operations
+        if(root->right)
+            Q.push(root->right);
+
+        if(root->left)
+            Q.push(root->left);
+    }
+    while(!S.empty())
+    {
+        cout<<S.top()->data<<" ";
+        S.pop();
+    }
 }

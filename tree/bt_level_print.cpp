@@ -1,6 +1,7 @@
 #include <iostream>
 #include "bst.hpp"
 #include <queue>
+#include <stack>
 using namespace std;
 // Print nodes in each level using 2 queues
 void bt_level_print_1(node *root)
@@ -84,3 +85,54 @@ void bt_level_print_2(node *root)
     }
 }
 
+// level order spiral search
+// Basically the idea is as follows
+//               100
+//              /   \
+//            80     120
+//           /  \   /   \
+//          70  60 110  130
+// Spiral search will
+// 100
+// 120 80
+// 70 60 110 130
+void bt_level_spiral_1(node *root)
+{
+    // 2 Stack approach
+    if(root == NULL)
+        return;
+
+    stack<node *> S1, S2;
+    S1.push(root);
+
+    while(!S1.empty() || !S2.empty())
+    {
+        cout<<endl;
+        while(!S1.empty())
+        {
+            root = S1.top();
+            cout<<root->data<<" ";
+            S1.pop();
+            // When pushing nodes to S2 push right first and then left (to achieve the spiral)
+            if(root->right)
+                S2.push(root->right);
+
+            if(root->left)
+                S2.push(root->left);
+        }
+        cout<<endl;
+        while(!S2.empty())
+        {
+            root = S2.top();
+            cout<<root->data<<" ";
+            S2.pop();
+            // When pushing nodes to S1 push left first and then right (to achieve the spiral)
+            if(root->left)
+                S1.push(root->left);
+
+            if(root->right)
+                S1.push(root->right);
+
+        }
+    }
+}

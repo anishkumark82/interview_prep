@@ -65,6 +65,12 @@ extern void bt_level_print_1(node *root);
 
 // Print nodes in each level using 1 queue and delimiter
 extern void bt_level_print_2(node *root);
+
+// Reverse level order traversing
+extern void bst_reverse_breadth_first_search(node *root);
+
+// Spiral level order traversing
+extern void bt_level_spiral_1(node *root);
 #endif // _BST_HPP_
 
 
