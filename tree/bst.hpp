@@ -71,6 +71,9 @@ extern void bst_reverse_breadth_first_search(node *root);
 
 // Spiral level order traversing
 extern void bt_level_spiral_1(node *root);
+
+// Find common ancestor
+extern int bstFindCommonAncestor(node *root, int data1, int data2);
 #endif // _BST_HPP_
 
 

@@ -80,5 +80,13 @@ int main()
     cout<<"\nlevel order spiral traversing "<<endl;
     bt_level_spiral_1(root);
 
+    // Find common ancestor
+    cout<<"Common ancestor for 80, 120 :: "<<bstFindCommonAncestor(root, 80, 120)<<endl;
+    cout<<"Common ancestor for 70, 80 :: "<<bstFindCommonAncestor(root, 70, 80)<<endl;
+    cout<<"Common ancestor for 70, 90 :: "<<bstFindCommonAncestor(root, 70, 90)<<endl;
+    cout<<"Common ancestor for 115, 130 :: "<<bstFindCommonAncestor(root, 115, 130)<<endl;
+    cout<<"Common ancestor for 110, 130 :: "<<bstFindCommonAncestor(root, 110, 130)<<endl;
+    cout<<"Common ancestor for 120, 140 :: "<<bstFindCommonAncestor(root, 120, 140)<<endl;
+
     return 0;
 }
