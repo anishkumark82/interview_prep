@@ -120,3 +120,41 @@ void postorder_iterative(node *root)
         S2.pop();
     }
 }
+
+// Iterative post order traversal using one stack
+void postorder_iterative_2(node *root)
+{
+    if(root == NULL)
+        return;
+    stack<node *> S;
+    node *current = root;
+
+    while(current != NULL || !S.empty())
+    {
+        if(current)
+        {
+            S.push(current);
+            current = current->left;
+        }
+        else
+        {
+            node *temp = S.top()->right;
+            if(temp == NULL)
+            {
+                temp = S.top();
+                S.pop();
+                cout<<temp->data<<" ";
+
+                // Print the nodes in the stack if already the right subtree is visited
+                while(!S.empty() && S.top()->right == temp)
+                {
+                    temp = S.top();
+                    S.pop();
+                    cout<<temp->data<<" ";
+                }
+            }
+            else
+                current = temp;
+        }
+    }
+}

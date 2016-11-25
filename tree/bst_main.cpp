@@ -65,7 +65,7 @@ int main()
     cout << "\nPost-order iterative traversal\n";
     postorder_iterative(root);
 
-    cout << "\nPost-order iterative traversal\n";
+    cout << "\ninorder-order iterative traversal\n";
     inorder_iterative(root);
 
     cout<<"\nPrint nodes at each level using 2 queues"<<endl;
@@ -88,5 +88,7 @@ int main()
     cout<<"Common ancestor for 110, 130 :: "<<bstFindCommonAncestor(root, 110, 130)<<endl;
     cout<<"Common ancestor for 120, 140 :: "<<bstFindCommonAncestor(root, 120, 140)<<endl;
 
+    cout<<"Post order traversal using one stack "<<endl;
+    postorder_iterative_2(root);
     return 0;
 }

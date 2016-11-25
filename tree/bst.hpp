@@ -74,6 +74,9 @@ extern void bt_level_spiral_1(node *root);
 
 // Find common ancestor
 extern int bstFindCommonAncestor(node *root, int data1, int data2);
+
+// Post order traversal using one stack
+extern void postorder_iterative_2(node *root);
 #endif // _BST_HPP_
 
 
