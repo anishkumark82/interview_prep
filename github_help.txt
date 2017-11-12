@@ -1,0 +1,16 @@
+Git commands
+=============
+git config --global user.name "anishkumark82"
+git config --global user.email anishkumark@gmail.com
+git clone "https://github.com/anishkumark82/interview_prep.git"
+
+
+#add a file to git hub
+git add <filename>
+git commit -m "comments" filename
+
+git status 
+
+#sync ur file to the master 
+git push -u origin master
+
