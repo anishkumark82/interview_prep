@@ -1,0 +1,120 @@
+Containers
+Sequence Containers (array or link list)
+- vector, deque, list, forward list, array
+
+Associative Containers (implemented using binary trees - are sorted)
+set, multi-set
+map, multi-map
+
+Unordered Containers (hash table)
+- unordered set, unordered multi-set
+-unordered map, unordered multi-map
+
+- Contents of a container are allocated in heap
+++ Common functions in all containers
+
+vec.empty() // Check if vector is empty or not
+vec.size() // Size of the container
+vector<int>v2(vec); // Copy Constructor
+vec.clear() // Clear contents of the vector
+vec2.swap(vec) // vec2 becomes empty and vec becomes equal to contents of vec2
+
+++ Operations Cost Vector
+Insert/remove at end - O(1)
+Insert/remove at beginning or middle - O(n)
+Search - O(n)
+Random access of elements possible
+
+deque
+-----
+Vector can grow in only one direction - only push_back
++ Vector is in contigous memory
+Deque can grow in both directions - not implemented contigously
+
+++ Operations Cost deque
+Insert/remove at beginning or end - O(1)
+Insert/remove at middle - O(n)
+Search - O(n)
+Random access of elements possible
+
+List
+----
+-implemented as a double link list
+
+++ Operations List deque
+Insert/remove at beginning/middle or end - O(1)
+Search - O(n)
+Random access of elements not possible
+
+Supports splice which allows cutting a part of one list and adding to another list
+Splice operation - O(1)
+No other containers support this feature
+eg: mylist1.splice(itr, mylist2, itr_a, itr_b); // O(1)
+
+forwardlist
+----
++ Implemented as a single linked list - has only fwd pointer
+
+
+++ Associative Container
+Implemented with binary tree
+Always sorted - default criteria <
+
+Search - O(log n)
+insert/remove - O(log n)
+set
+---
+- Does not allow duplicates
+multiset
+-------
+- Allows duplicate
+
+
+set/multiset - is readonly cannot be modified. since it will break the binary tree
+               Random access of elements not possible
+
+set/multiset sort according value
+
+map/multimap
+------------
+sort according to key
+they have a key value pair
+key cannot be modified since it will break the binary tree
+
+Unordered Containers (Hash table)
+---------------------------------
+unordered set/multiset
+unordered map/multimap
+
+- Fastest of all containers 
+- depends on how good the hash function is
+- bucket
+- hash collision - degrades performance
+
+
+Search - O(1)
+insert/remove - O(1)
+
+Additional functions for unordered containers
+myset.load_factor()
+myset.bucket(x) - bucket to which x belongs
+myset.bucket_count() - number of buckets of myset
+
+Associative Array
+------------------
+- Implemented using map or unordered map
+- Cannot be implemented with multi-map or multi-set - since it does not support subscript operator .. operator []
+
+- Search time - unordered map - O(1) - map - O(log n)
+- but unordered map may degrade because of hash collision and worst case can degrade to O(n)
+
+
+
+Container adapters
+------------------
+
+stack - push() pop() and top()
+queue - push() pop() front() back()
+priority queue - push() pop() and top() - first item always has the highest priority
+
+
