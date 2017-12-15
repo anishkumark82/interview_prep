@@ -118,3 +118,20 @@ queue - push() pop() front() back()
 priority queue - push() pop() and top() - first item always has the highest priority
 
 
+Iterator adapters
+-----------------
+- Insert iterator
+- stream iterator
+- reverse iterator
+
+Algorithm
+---------
+can be generally by applied to iterators of the container
+min_element(itr1, itr2)
+sort(itr1, itr2)
+reverse(itr1, itr2)
+
+ALGORITHMS NEEDING 2 RANGES
+copy(itr,vec.end(), vec2.begin())
+
+Functors - function as objects
