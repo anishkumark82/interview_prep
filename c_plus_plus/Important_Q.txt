@@ -1,0 +1,74 @@
+operator new Vs new operator
+----------------------------
+Operator new is a function that allocates raw memory -- at least conceptually, it's not much different from malloc(). Though it's fairly unusual unless you're writing something like your own container, you can call operator new directly, like:
+
+char *x = static_cast<char *>(operator new(100));
+It's also possible to overload operator new either globally, or for a specific class. IIRC, the signature is:
+
+void *operator new(size_t);
+Of course, if you overload an operator new (either global or for a class), you'll also want/need to overload the matching operator delete as well. For what it's worth, there's also a separate operator new[] that's used to allocate memory for arrays -- but you're almost certainly better off ignoring that whole mess completely.
+
+The new operator is what you normally use to create an object from the free store:
+
+my_class *x = new my_class(0);
+The difference between the two is that operator new just allocates raw memory, nothing else. The new operator starts by using operator new to allocate memory, but then it invokes the constructor for the right type of object, so the result is a real live object created in that memory. If that object contains any other objects (either embedded or as base classes) those constructors as invoked as well.
+
+Q. Operator precedence in C++
+https://www.geeksforgeeks.org/operators-c-c/
+
+Q. References vs Pointers
+Both references and pointers can be used to change local variables of one function inside another function. Both of them can also be used to save copying of big objects when passed as arguments to functions or returned from functions, to get efficiency gain.
+Despite above similarities, there are following differences between references and pointers.
+
+A pointer can be declared as void but a reference can never be void
+For example
+
+int a = 10;
+void* aa = &a;. //it is valid
+void &ar = a; // it is not valid
+Thanks to Shweta Bansal for adding this point.
+
+References are less powerful than pointers
+1) Once a reference is created, it cannot be later made to reference another object; it cannot be reseated. This is often done with pointers.
+2) References cannot be NULL. Pointers are often made NULL to indicate that they are not pointing to any valid thing.
+3) A reference must be initialized when declared. There is no such restriction with pointers
+
+Due to the above limitations, references in C++ cannot be used for implementing data structures like Linked List, Tree, etc. In Java, references don’t have above restrictions, and can be used to implement all data structures. References being more powerful in Java, is the main reason Java doesn’t need pointers.
+
+References are safer and easier to use:
+1) Safer: Since references must be initialized, wild references like wild pointers are unlikely to exist. It is still possible to have references that don’t refer to a valid location (See questions 5 and 6 in the below exercise )
+2) Easier to use: References don’t need dereferencing operator to access the value. They can be used like normal variables. ‘&’ operator is needed only at the time of declaration. Also, members of an object reference can be accessed with dot operator (‘.’), unlike pointers where arrow operator (->) is needed to access members.
+
+Together with the above reasons, there are few places like copy constructor argument where pointer cannot be used. Reference must be used pass the argument in copy constructor. Similarly references must be used for overloading some operators like ++.
+
+Q. What is the difference between public, private, and protected inheritance in C++? All of the questions I've found on SO deal with specific cases.
+
+
+839
+down vote
+accepted
+To answer that question, I'd like to describe member's accessors first in my own words. If you already know this, skip to the heading "next:".
+
+There are three accessors that I'm aware of: public, protected and private.
+
+Let:
+
+class Base {
+    public:
+        int publicMember;
+    protected:
+        int protectedMember;
+    private:
+        int privateMember;
+};
+Everything that is aware of Base is also aware that Base contains publicMember.
+Only the children (and their children) are aware that Base contains protectedMember.
+No one but Base is aware of privateMember.
+By "is aware of", I mean "acknowledge the existence of, and thus be able to access".
+
+next:
+The same happens with public, private and protected inheritance. Let's consider a class Base and a class Child that inherits from Base.
+
+If the inheritance is public, everything that is aware of Base and Child is also aware that Child inherits from Base.
+If the inheritance is protected, only Child, and its children, are aware that they inherit from Base.
+If the inheritance is private, no one other than Child is aware of the inheritance.
