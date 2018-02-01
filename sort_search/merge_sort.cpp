@@ -5,62 +5,61 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-
-void mergeArr(vector<int>&arr, int l, int m, int r)
+void merge(vector<int> &arr, int l, int m, int r)
 {
-    int nL = m - l + 1;
-    int nR = r - m;
-
-    vector<int>L(nL);
-    vector<int>R(nR);
-    // Copy over L & R from arr
-    for(int i = 0; i < nL; i++)
-        L[i] = arr[l+i];
-    for(int j = 0; j < nR; j++)
-        R[j] = arr[m+1+j];
-
-    int i = 0,j = 0,k = l;
-
-    while(i < nL && j < nR)
+    cout<<"l = " <<l<< " m = "<<m<<" r = "<<r<<endl;
+    vector<int>L(m-l+1);
+    vector<int>R(r - m);
+    // Copy over the contents of the Left and right sub array
+    for(int i = l; i <= m; i++)
     {
-        if (L[i] <= R[j])
+        L[i-l] = arr[i];
+    }
+
+    for(int i = m+1; i <= r; i++)
+    {
+        R[i-(m+1)] = arr[i];
+    }
+
+    int i = 0, j = 0, k = l;
+
+    while(i < L.size() && j < R.size())
+    {
+        if(L[i] < R[j])
         {
-            arr[k] = L[i];
-            cout<<" arr["<<k<<"]"<<arr[k];
-            k++; i++;
+            arr[k++] = L[i++];
         }
         else
         {
-            arr[k] = R[j];
-            cout<<" arr["<<k<<"]"<<arr[k];
-            k++; j++;
+            arr[k++] = R[j++];
         }
     }
-    while(i < nL)
+    while(i < L.size())
     {
-        arr[k] = L[i];
-        cout<<" arr["<<k<<"]"<<arr[k];
-        k++; i++;
-     }
-    while(j < nR)
-    {
-        arr[k] = R[j];
-        cout<<" arr["<<k<<"]"<<arr[k];
-        k++; j++;
+        arr[k++] = L[i++];
     }
-    cout<<endl;
+    while(j < R.size())
+    {
+        arr[k++] = R[j++];
+    }
+
 }
 
-void mergeSort(vector<int>&arr, int l, int r)
+
+void mergeSort(vector<int> &arr, int l, int r)
 {
-    if(l < r)
+    if(r - l < 2)
     {
-        int m = l + (r - l)/2;
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-        mergeArr(arr, l, m, r);
+        return;
     }
+
+    int m = (l + r)/2;
+    // Sort the left sub-array
+    mergeSort(arr, l, m);
+    mergeSort(arr, m+1, r);
+    merge(arr, l, m, r);
 }
+
 int main()
 {
     int n;

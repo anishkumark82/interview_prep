@@ -12,8 +12,12 @@ void selection_sort(vector<int> &arr)
     {
         int min_idx = i;
         for(int j = i+1; j < arr.size(); j++)
-            if(arr[min_idx] > arr[j])
+        {
+            if(arr[j] < arr[min_idx])
+            {
                 min_idx = j;
+            }
+        }
         swap(arr[i], arr[min_idx]);
     }
 }

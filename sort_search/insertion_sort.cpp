@@ -8,16 +8,17 @@ using namespace std;
 
 void insertion_sort(vector<int> &arr)
 {
-    for (int i = 1; i < arr.size()-1; i++)
+    for(int i = 1; i < arr.size(); i++)
     {
-        int key = arr[i];
-        int j = i - 1;
-        while(j >=0 && arr[j] > key)
+        int value = arr[i]; // current value to be inserted in the correct location
+        int hole = i; // identifies the final location of value
+
+        while(hole > 0 && arr[hole - 1] > value)
         {
-            arr[j+1] = arr[j];
-            j--;
+            arr[hole] = arr[hole - 1]; // move elements to the right until the slot for the new index is reached
+            hole--;
         }
-        arr[j+1] = key;
+        arr[hole] = value; // insert the node in the right location
     }
 }
 
