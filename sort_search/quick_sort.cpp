@@ -6,31 +6,30 @@
 #include <algorithm>
 using namespace std;
 
-int partitionQ(vector<int>&arr, int start, int end)
+int partitionArr(vector<int> &arr, int start, int end)
 {
-    int pIndex = start;
-    int pivot = end;
-
-    for(int i = start; i < end; i++)
-    {
-        if(arr[i] <= arr[pivot])
-        {
-            swap(arr[i], arr[pIndex]);
-            pIndex++;
-        }
-    }
-    swap(arr[pIndex], arr[pivot]);
-    return pIndex;
+	int pivot = arr[end];
+	int pIndex = start;
+	for(int i = start; i <= end-1; i++)
+	{
+		if(arr[i] <= pivot)
+		{
+			swap(arr[i], arr[pIndex]);
+			pIndex++;
+		}
+	}
+	swap(arr[pIndex], arr[end]);
+	return pIndex;
 }
 
-void qSort(vector<int>&arr, int start, int end)
+void qSort(vector<int> &arr, int start, int end)
 {
-    if(start < end)
-    {
-        int p_idx = partitionQ(arr, start, end);
-        qSort(arr, start, p_idx-1);
-        qSort(arr, p_idx+1, end);
-    }
+	if(start < end)
+	{
+		int pIndex = partitionArr(arr, start, end);
+		qSort(arr, start, pIndex-1);
+		qSort(arr, pIndex+1, end);
+	}
 }
 int main()
 {
