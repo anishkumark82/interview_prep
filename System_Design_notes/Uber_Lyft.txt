@@ -1,0 +1,34 @@
+Uber App
+
+Drive Share App
+
+Core Service
+- Driver Customer Matching
+- Mapping
+
+Other Services
+- Payment mechanism
+- Driver rating
+
+
+Key design aspects
+Trip Storage
+	Data centers (Closed and backup) - Data ware houses like Hadoop to archive data
+	Caches - especially map data, customer data
+	Driver positions cannot be cached
+	
+Logging
+   - Get driver and customer logs (positions, trip information, trip status, etc)
+	 Use Event logging services like Kafka 	
+
+Sophisticated Routing mechanism
+	User end apps to back end services - Each of these services shall be micro services (example Region Maps)
+
+ 	 
+Mapping
+- Graph solution
+	- City locations, driver, customer, are nodes, routes shall be edges
+	- Interconnecting edges weighted; calculated using traffic data, speed limit etc
+		Key task get ETA (estimated arrival time, estimated pickup time)
+			- Use historical data 
+			- Splitting graph algorithm - Shortest path algorithms, NP-Complete Algorithm, Traveling Salesman problem related algorithm, etc finds application here

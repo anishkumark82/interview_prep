@@ -16,3 +16,5 @@ git push -u origin master
 
 # to sync from master
 git pull origin master
+
+git clone "https://github.com/anishkumark82/curl.git"
