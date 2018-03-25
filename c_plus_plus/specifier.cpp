@@ -95,15 +95,16 @@ public:
         cout<<"Derived_prot::"<<__func__<<endl;
         return b_protected;
     }
-    /*
+/*
     The below function does not work. We are trying to access a private member in Base using a function in derived class.
     Whose existence Derived_prot should not be made aware
+*/
     int getC()
     {
         cout<<"Derived_prot::"<<__func__<<endl;
-        return c_private;
+        return Base::getC();
     }
-    */
+
 
 
 };
@@ -174,7 +175,7 @@ int main()
     // Private member can be accessed only by base class's member function
     //cout<<dprot.c_private<<endl;
     // Cannot access getC() of base since Base was inherited as private
-    //cout<<dprot.getC()<<endl; // Private classes member function
+    cout<<dprot.getC()<<endl; // Private classes member function
 
     return 0;
 }

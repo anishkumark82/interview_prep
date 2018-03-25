@@ -28,7 +28,7 @@ Random access of elements possible
 deque
 -----
 Vector can grow in only one direction - only push_back
-+ Vector is in contigous memory
++ Vector is in contiguous memory
 Deque can grow in both directions - not implemented contigously
 
 ++ Operations Cost deque

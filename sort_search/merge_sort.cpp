@@ -1,31 +1,36 @@
-// Merge Sort
-// O(nlog n)
-
 #include <iostream>
 #include <vector>
-#include <algorithm>
 using namespace std;
+void merge(vector<int> &arr, int l, int m, int r);
+void mergeSort(vector<int> &arr, int start, int end)
+{
+    if(start < end)
+    {
+        int mid = (start + end)/2;
+        mergeSort(arr, start, mid);
+        mergeSort(arr, mid+1, end);
+        merge(arr, start, mid, end);
+    }
+}
+
 void merge(vector<int> &arr, int l, int m, int r)
 {
-    cout<<"l = " <<l<< " m = "<<m<<" r = "<<r<<endl;
-    vector<int>L(m-l+1);
-    vector<int>R(r - m);
-    // Copy over the contents of the Left and right sub array
-    for(int i = l; i <= m; i++)
+    // create the left array and right array
+    vector<int> L(m-l+1);
+    vector<int> R(r-m);
+
+    for(int i = 0; i < L.size(); i++)
     {
-        L[i-l] = arr[i];
+        L[i] = arr[l+i];
     }
-
-    for(int i = m+1; i <= r; i++)
+    for(int i = 0; i < R.size(); i++)
     {
-        R[i-(m+1)] = arr[i];
+        R[i] = arr[m+1+i];
     }
-
-    int i = 0, j = 0, k = l;
-
+    int i = 0; int j = 0; int k = l;
     while(i < L.size() && j < R.size())
     {
-        if(L[i] < R[j])
+        if(L[i] <= R[j])
         {
             arr[k++] = L[i++];
         }
@@ -42,24 +47,7 @@ void merge(vector<int> &arr, int l, int m, int r)
     {
         arr[k++] = R[j++];
     }
-
 }
-
-
-void mergeSort(vector<int> &arr, int l, int r)
-{
-    if(r - l < 2)
-    {
-        return;
-    }
-
-    int m = (l + r)/2;
-    // Sort the left sub-array
-    mergeSort(arr, l, m);
-    mergeSort(arr, m+1, r);
-    merge(arr, l, m, r);
-}
-
 int main()
 {
     int n;
@@ -67,11 +55,10 @@ int main()
     vector<int>arr(n);
     for (int i = 0; i < n; i++)
         cin>>arr[i];
-    mergeSort(arr, 0, n - 1);
+    mergeSort(arr, 0, arr.size()-1);
     cout<<"sorted arr : ";
     for (int i = 0; i < n; i++)
         cout<<arr[i]<<" ";
     cout<<endl;
     return 0;
 }
-
